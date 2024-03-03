@@ -1,0 +1,9 @@
+ext {
+
+    androidCompileSdkVersion = 34
+    androidMinSdkVersion = 26
+    androidTargetSdkVersion = 34
+
+    applicationPackage = "com.moveon.android"
+    composeVersion = "1.5.8"
+}

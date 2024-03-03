@@ -1,4 +1,4 @@
-package com.example.moveon
+package com.moveon.android
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

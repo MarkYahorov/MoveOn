@@ -1,0 +1,66 @@
+apply from: "$rootDir/build_scripts/project_dependencies_versions.gradle"
+
+ext {
+
+    coreAndroidDependencies = [
+            core_ktx      : "androidx.core:core-ktx:$core_ktx_version",
+            appcompat     : "androidx.appcompat:appcompat:$appcompat_version",
+            lifecycle_ktx : "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_ktx_version",
+    ]
+
+    composeAndroidDependencies = [
+            compose_activity      : "androidx.activity:activity-compose:$compose_activity_version",
+            compose_ui            : "androidx.compose.ui:ui:$compose_ui_version",
+            compose_ui_tooling    : "androidx.compose.ui:ui-tooling:$compose_ui_tooling_version",
+            compose_foundation    : "androidx.compose.foundation:foundation:$compose_foundation_version",
+            compose_material      : "androidx.compose.material:material:$compose_material_version",
+            compose_icons_core    : "androidx.compose.material:material-icons-core:$compose_icons_core_version",
+            compose_icons_extended: "androidx.compose.material:material-icons-extended:$compose_icons_extended_version",
+            compose_navigation    : "androidx.navigation:navigation-compose:$compose_navigation_version",
+            compose_constraint    : "androidx.constraintlayout:constraintlayout-compose:$compose_constraint_version",
+            compose_material3     : "androidx.compose.material3:material3:$compose_material_3_version"
+    ]
+
+    coreUIDependencies = [
+            material  : "com.google.android.material:material:$material_version",
+            paging_ktx: "androidx.paging:paging-runtime-ktx:$paging_ktx_version",
+    ]
+
+    cameraDependencies = [
+            camera_core     : "androidx.camera:camera-core:$camera_core_version",
+            camera2         : "androidx.camera:camera-camera2:$camera_2_version",
+            camera_lifecycle: "androidx.camera:camera-lifecycle:$camera_lifecycle_version",
+            camera_view     : "androidx.camera:camera-view:$camera_view_version",
+    ]
+
+    coreNetworkDependencies = [
+            retrofit   : "com.squareup.retrofit2:retrofit:$retrofit_version",
+            gson       : "com.google.code.gson:gson:$gson_version",
+            okHttp     : "com.squareup.okhttp3:okhttp:$okHttp_version",
+            gsonAdapter: "com.squareup.retrofit2:converter-gson:$gsonAdapter_version",
+    ]
+
+    coreMultithreadingDependencies = [
+            coroutines_core   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_core_version",
+            coroutines_android: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_android_version"
+    ]
+
+    diDependencies = [
+            hilt        : "com.google.dagger:hilt-android:$hilt_version",
+            hiltCompiler: "com.google.dagger:hilt-compiler:$hilt_compilation_version",
+    ]
+
+    coreTestingDependencies = [
+            kotlinx_coroutines_test: "org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlinx_coroutines_test_version",
+            junit4                 : "junit:junit:$junit4_version",
+            mockk                  : "io.mockk:mockk:$mockk_version",
+            mockk_agent            : "io.mockk:mockk-agent-jvm:$mockk_version",
+            junit5                 : "org.junit.jupiter:junit-jupiter:$junit5_version",
+            core_android_tests     : "androidx.test:core:$androidXTestVersion",
+    ]
+
+    paginationAndroidDependencies = [
+            paging_compose: "androidx.paging:paging-compose:$paging_compose_version",
+            paging_runtime: "androidx.paging:paging-runtime:$pagination_runtime_version"
+    ]
+}

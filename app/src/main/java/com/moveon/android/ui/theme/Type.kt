@@ -1,4 +1,4 @@
-package com.example.moveon.ui.theme
+package com.moveon.android.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

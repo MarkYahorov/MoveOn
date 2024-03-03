@@ -1,4 +1,4 @@
-package com.example.moveon.ui.theme
+package com.moveon.android.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

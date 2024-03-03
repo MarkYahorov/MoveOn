@@ -1,0 +1,97 @@
+apply from: "$rootDir/build_scripts/project_properties.gradle"
+
+ext {
+    applyBuildFileForModules = { Boolean isAppModule = false ->
+        if (isAppModule) {
+            apply plugin: 'com.android.application'
+            apply plugin: 'org.jetbrains.kotlin.android'
+
+            android {
+
+                packagingOptions {
+                    excludes += "fonts/*"
+                    excludes += "fonts"
+                    resources {
+                        excludes += '/META-INF/{AL2.0,LGPL2.1}'
+                    }
+                }
+
+                defaultConfig {
+                    applicationId = applicationPackage
+                    versionCode = 1
+                    versionName = "1.0"
+
+                    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+                    vectorDrawables {
+                        useSupportLibrary = true
+                    }
+                }
+            }
+        } else {
+            apply plugin: 'com.android.library'
+        }
+        applyCommonModule()
+    }
+
+    applyCommonModule = {
+        android {
+            def manifest = new XmlSlurper().parse(file("src/main/AndroidManifest.xml"))
+            namespace manifest.@package.text()
+
+            compileSdkVersion androidCompileSdkVersion
+
+            buildFeatures {
+                compose true
+            }
+
+            composeOptions {
+                kotlinCompilerExtensionVersion composeVersion
+            }
+
+
+            buildTypes {
+                release {
+                    isMinifyEnabled = false
+                    proguardFiles(
+                            getDefaultProguardFile("proguard-android-optimize.txt"),
+                            "proguard-rules.pro"
+                    )
+                }
+            }
+
+            compileOptions {
+                sourceCompatibility = JavaVersion.VERSION_17
+                targetCompatibility = JavaVersion.VERSION_17
+            }
+            defaultConfig {
+                minSdkVersion androidMinSdkVersion
+                targetSdkVersion androidTargetSdkVersion
+            }
+            packagingOptions {
+                excludes += "fonts/*"
+                excludes += "fonts"
+                resources.excludes.add("META-INF/LICENSE*")
+            }
+        }
+    }
+
+    pluginsWithHilt = {
+        apply plugin: 'kotlin-kapt'
+        apply plugin: 'com.google.dagger.hilt.android'
+    }
+
+    applyAndroidKotlin = {
+        apply plugin: 'kotlin-android'
+        apply plugin: 'kotlin-kapt'
+    }
+
+    resolveModules = { dir ->
+        def files = new File(rootProject.projectDir, "modules/$dir")
+        files.listFiles().stream().filter { file -> !file.hidden }.each { file ->
+            def name = file.name
+            dependencies {
+                implementation project(":$name")
+            }
+        }
+    }
+}

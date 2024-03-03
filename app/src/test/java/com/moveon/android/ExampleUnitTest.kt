@@ -1,4 +1,4 @@
-package com.example.moveon
+package com.moveon.android
 
 import org.junit.Test
 
