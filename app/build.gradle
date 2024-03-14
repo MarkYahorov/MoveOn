@@ -2,14 +2,19 @@ apply from: "$rootDir/build_scripts/project_dependencies.gradle"
 apply from: "$rootDir/build_scripts/common_module_script.gradle"
 
 applyAndroidKotlin()
-applyBuildFileForModules(true)
+applyBuildFileForModules(true, true)
+pluginsWithHilt()
 
 dependencies {
+    resolveModules("core")
+    resolveModules("features")
 
+    implementation diDependencies["hilt"]
     implementation coreAndroidDependencies.values()
     implementation coreMultithreadingDependencies.values()
     implementation coreNetworkDependencies.values()
     implementation composeAndroidDependencies.values()
     implementation coreUIDependencies.values()
     implementation cameraDependencies.values()
+    kapt diDependencies["hiltCompiler"]
 }

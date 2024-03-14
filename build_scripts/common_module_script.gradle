@@ -1,7 +1,7 @@
 apply from: "$rootDir/build_scripts/project_properties.gradle"
 
 ext {
-    applyBuildFileForModules = { Boolean isAppModule = false ->
+    applyBuildFileForModules = { Boolean isAppModule = false, Boolean needCompose = false ->
         if (isAppModule) {
             apply plugin: 'com.android.application'
             apply plugin: 'org.jetbrains.kotlin.android'
@@ -29,23 +29,26 @@ ext {
             }
         } else {
             apply plugin: 'com.android.library'
+            apply plugin: 'org.jetbrains.kotlin.android'
         }
-        applyCommonModule()
+        applyCommonModule(needCompose)
     }
 
-    applyCommonModule = {
+    applyCommonModule = { Boolean needCompose ->
         android {
             def manifest = new XmlSlurper().parse(file("src/main/AndroidManifest.xml"))
             namespace manifest.@package.text()
 
             compileSdkVersion androidCompileSdkVersion
 
-            buildFeatures {
-                compose true
-            }
+            if (needCompose) {
+                buildFeatures {
+                    compose true
+                }
 
-            composeOptions {
-                kotlinCompilerExtensionVersion composeVersion
+                composeOptions {
+                    kotlinCompilerExtensionVersion composeVersion
+                }
             }
 
 
@@ -87,7 +90,7 @@ ext {
 
     resolveModules = { dir ->
         def files = new File(rootProject.projectDir, "modules/$dir")
-        files.listFiles().stream().filter { file -> !file.hidden }.each { file ->
+        files.listFiles().stream().each { file ->
             def name = file.name
             dependencies {
                 implementation project(":$name")

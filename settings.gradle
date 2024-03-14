@@ -14,5 +14,17 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "MoveOn"
-include(":app")
+include ':app'
+
+def findAllModulesInDir = { dir, array = [] ->
+    def files = new File(rootProject.projectDir, "modules/$dir")
+    files.listFiles().stream().each { file ->
+        def name = file.name
+        include ":$name"
+        project(":$name").projectDir = new File(rootDir, "modules/$dir/$name")
+    }
+}
+
+findAllModulesInDir("core")
+findAllModulesInDir("features")
  

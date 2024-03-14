@@ -1,0 +1,15 @@
+apply from: "$rootDir/build_scripts/project_dependencies.gradle"
+apply from: "$rootDir/build_scripts/common_module_script.gradle"
+
+pluginsWithHilt()
+applyBuildFileForModules(false, false)
+
+dependencies {
+    implementation diDependencies["hilt"]
+    implementation project(':core')
+    api paginationAndroidDependencies.values()
+    implementation coreNetworkDependencies.values()
+    implementation coreAndroidDependencies.values()
+    implementation coreMultithreadingDependencies.values()
+    kapt diDependencies["hiltCompiler"]
+}

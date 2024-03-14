@@ -3,9 +3,10 @@ apply from: "$rootDir/build_scripts/project_dependencies_versions.gradle"
 ext {
 
     coreAndroidDependencies = [
-            core_ktx      : "androidx.core:core-ktx:$core_ktx_version",
-            appcompat     : "androidx.appcompat:appcompat:$appcompat_version",
-            lifecycle_ktx : "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_ktx_version",
+            core_ktx             : "androidx.core:core-ktx:$core_ktx_version",
+            appcompat            : "androidx.appcompat:appcompat:$appcompat_version",
+            lifecycle_ktx        : "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_ktx_version",
+            hiltNavigationCompose: "androidx.hilt:hilt-navigation-compose:$hilt_navigation_compose_version"
     ]
 
     composeAndroidDependencies = [
@@ -62,5 +63,13 @@ ext {
     paginationAndroidDependencies = [
             paging_compose: "androidx.paging:paging-compose:$paging_compose_version",
             paging_runtime: "androidx.paging:paging-runtime:$pagination_runtime_version"
+    ]
+
+    coilDependencies = [
+            coil: "io.coil-kt:coil-compose:$coil_version",
+    ]
+
+    lottieDependencies = [
+            lottie: "com.airbnb.android:lottie-compose:$lottie_version",
     ]
 }
