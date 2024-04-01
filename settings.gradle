@@ -27,4 +27,3 @@ def findAllModulesInDir = { dir, array = [] ->
 
 findAllModulesInDir("core")
 findAllModulesInDir("features")
- 

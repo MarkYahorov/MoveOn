@@ -6,7 +6,6 @@ pluginsWithHilt()
 
 dependencies {
 
-    implementation project(':pagination')
     implementation project(':core')
     implementation project(':network')
     implementation project(':ui_core')

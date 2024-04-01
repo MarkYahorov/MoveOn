@@ -7,10 +7,10 @@ import com.moveon.core.ResponseError
 import com.moveon.core.Success
 import com.moveon.pagination.data.PagingPageResponse
 import com.moveon.pagination.data.PagingRequest
-import com.moveon.pagination.repository.PaginationProvider
+import com.moveon.pagination.repository.PaginationRepository
 
 class PaginationSource<Request : PagingRequest, Value : Any, Err : ResponseError>(
-    private val repository: PaginationProvider<Request, Value, Err>,
+    private val repository: PaginationRepository<Request, Value, Err>,
     private val keys: MutableList<String> = mutableListOf(),
     var onSuccessFetchData: (PagingPageResponse<Value>) -> Unit,
     var onError: (Err) -> Unit

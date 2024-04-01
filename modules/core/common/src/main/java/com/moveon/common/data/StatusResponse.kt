@@ -1,4 +1,4 @@
-package com.moveon.changes.data.data.response
+package com.moveon.common.data
 
 import com.google.gson.annotations.SerializedName
 

@@ -61,7 +61,10 @@ fun ChangesPage(viewModel: ChangesViewModel = hiltViewModel()) {
             }, state = listScrollState)
         } else {
             if (viewModel.isCountriesErrorVisible) {
-                Column(modifier = Modifier.align(Alignment.Center)) {
+                Column(
+                    modifier = Modifier.align(Alignment.Center),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
                     Text(text = "Srry countries arn't loaded")
 
                     OutlinedButton(onClick = { viewModel.getCountries() }) {

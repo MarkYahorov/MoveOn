@@ -1,6 +1,8 @@
 package com.moveon.changes.data.data.response
 
 import com.google.gson.annotations.SerializedName
+import com.moveon.common.data.SeriesStatusResponse
+import com.moveon.common.data.ShowTypeResponse
 
 data class ChangesShowResponse(
     @SerializedName("type")

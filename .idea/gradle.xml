@@ -12,11 +12,13 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/modules/core/common" />
             <option value="$PROJECT_DIR$/modules/core/core" />
             <option value="$PROJECT_DIR$/modules/core/network" />
             <option value="$PROJECT_DIR$/modules/core/pagination" />
             <option value="$PROJECT_DIR$/modules/core/ui_core" />
             <option value="$PROJECT_DIR$/modules/features/changes" />
+            <option value="$PROJECT_DIR$/modules/features/detail" />
           </set>
         </option>
       </GradleProjectSettings>
