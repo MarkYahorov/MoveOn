@@ -7,5 +7,6 @@ applyBuildFileForModules(false, false)
 dependencies {
     implementation diDependencies["hilt"]
     implementation coreMultithreadingDependencies.values()
+    implementation coreAndroidDependencies.values()
     kapt diDependencies["hiltCompiler"]
 }
