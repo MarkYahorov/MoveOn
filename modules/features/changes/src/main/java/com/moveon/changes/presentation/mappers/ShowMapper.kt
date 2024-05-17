@@ -1,18 +1,15 @@
 package com.moveon.changes.presentation.mappers
 
 import com.moveon.changes.data.data.response.ChangesShowResponse
-import com.moveon.common.data.ShowTypeResponse
-import com.moveon.common.data.StatusResponse
+import com.moveon.common.mapper.GenresMapper
 import com.moveon.common.mapper.ShowTypeMapper
 import com.moveon.common.mapper.StatusMapper
 import com.moveon.common.mapper.YearMapper
 import com.moveon.ui_core.data.ChangesShowPresentation
-import com.moveon.ui_core.data.ShowType
-import com.moveon.ui_core.data.StatusPresentation
 import javax.inject.Inject
 
 class ShowMapper @Inject constructor(
-    private val genresMapper: GenderMapper,
+    private val genresMapper: GenresMapper,
     private val showTypeMapper: ShowTypeMapper,
     private val statusMapper: StatusMapper,
     private val yearMapper: YearMapper

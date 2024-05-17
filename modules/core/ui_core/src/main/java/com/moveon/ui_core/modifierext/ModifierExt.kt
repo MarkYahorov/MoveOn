@@ -14,6 +14,8 @@ fun Modifier.roundedShape12Dp() = clip(RoundedCornerShape(12.dp))
 
 fun Modifier.roundedShape16Dp() = clip(RoundedCornerShape(16.dp))
 
+fun Modifier.bottomPadding2Dp() = padding(bottom = 2.dp)
+
 fun Modifier.bottomPadding6Dp() = padding(bottom = 6.dp)
 
 fun Modifier.bottomPadding12Dp() = padding(bottom = 12.dp)

@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.paging.PagingData
 import com.moveon.changes.data.repository.ChangesRepository
-import com.moveon.changes.presentation.mappers.CountriesMapper
+import com.moveon.common.mapper.CountriesMapper
 import com.moveon.core.fetcher.fetchData
 import com.moveon.core.viewmodel.CoreViewModel
 import com.moveon.network.network.data.CountriesResponse
@@ -19,7 +19,7 @@ import kotlinx.coroutines.flow.emptyFlow
 @HiltViewModel
 class ChangesViewModel @Inject constructor(
     repository: ChangesRepository,
-    private val countriesMapper: CountriesMapper,
+    private val countriesMapper: CountriesMapper
 ) : CoreViewModel() {
 
     var changingFlow: Flow<PagingData<ChangesItemPresentation>> by mutableStateOf(emptyFlow())

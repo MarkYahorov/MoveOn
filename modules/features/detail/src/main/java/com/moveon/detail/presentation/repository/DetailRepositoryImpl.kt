@@ -1,6 +1,7 @@
 package com.moveon.detail.presentation.repository
 
 import com.moveon.core.ResponseResult
+import com.moveon.core.mapErr
 import com.moveon.core.mapOk
 import com.moveon.detail.data.repository.DetailsRepository
 import com.moveon.detail.data.request.DetailRequest
@@ -18,11 +19,12 @@ class DetailRepositoryImpl @Inject constructor(
 ) : DetailsRepository {
     override suspend fun fetchDetail(request: DetailRequest): ResponseResult<DetailPresentation, NetworkError> {
         return withContext(Dispatchers.IO) {
-            with(request) {
-                service.fetchDetail(imdbId, tmdbId)
-            }
+            service.fetchDetail(
+                request.imdbId,
+                if (request.imdbId.isNullOrEmpty()) request.tmdbId else null
+            )
         }.mapOk {
-            detailMapper.map(it)
+            detailMapper.map(it.detail)
         }
     }
 }

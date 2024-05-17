@@ -4,11 +4,10 @@ apply from: "$rootDir/build_scripts/common_module_script.gradle"
 applyBuildFileForModules(false, false)
 
 dependencies {
-
-    implementation project(':common')
     implementation coreNetworkDependencies.values()
     implementation coreAndroidDependencies.values()
     implementation composeAndroidDependencies.values()
     implementation coreMultithreadingDependencies.values()
     implementation project(':ui_core')
+    implementation project(':network')
 }

@@ -21,6 +21,7 @@ import androidx.compose.ui.Modifier
 import com.moveon.changes.presentation.data.ChangeTypePresentation
 import com.moveon.changes.presentation.data.TargetTypePresentation
 import com.moveon.changes.presentation.viewmodel.ChangesBottomSheetStateContainer
+import com.moveon.ui_core.dropdown.ViewWithDropDown
 import com.moveon.ui_core.modifierext.bottomPadding12Dp
 import com.moveon.ui_core.modifierext.bottomPadding18Dp
 import com.moveon.ui_core.modifierext.horizontalPadding12Dp
@@ -51,13 +52,13 @@ fun ChangesFilterBottomSheet(viewModel: ChangesBottomSheetStateContainer, sheetS
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
 
-                ChangesFilterViewWithDropDown(
+                ViewWithDropDown(
                     title = viewModel.selectedService?.title.orEmpty(),
                     dropDownItems = viewModel.services,
                     onItemClicked = { viewModel.onServiceChanged(it) }
                 )
 
-                ChangesFilterViewWithDropDown(
+                ViewWithDropDown(
                     title = viewModel.selectedCountry?.title.orEmpty(),
                     dropDownItems = viewModel.countriesList,
                     onItemClicked = {
@@ -75,13 +76,13 @@ fun ChangesFilterBottomSheet(viewModel: ChangesBottomSheetStateContainer, sheetS
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
 
-                ChangesFilterViewWithDropDown(
+                ViewWithDropDown(
                     title = viewModel.targetType.name,
                     dropDownItems = TargetTypePresentation.values().toList(),
                     onItemClicked = { viewModel.onTargetTypeChanged(it) }
                 )
 
-                ChangesFilterViewWithDropDown(
+                ViewWithDropDown(
                     title = viewModel.changeType.name,
                     dropDownItems = ChangeTypePresentation.values().toList(),
                     onItemClicked = {

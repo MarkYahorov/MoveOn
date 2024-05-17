@@ -1,5 +1,6 @@
 package com.moveon.changes.data
 
+import android.util.Log
 import com.moveon.changes.data.data.request.ChangesRequest
 import com.moveon.changes.data.repository.ChangesRepository
 import com.moveon.changes.data.service.ChangesService
@@ -36,6 +37,7 @@ class ChangesPaginationRepository @Inject constructor(
                 pageKey = nextPage
             )
         }.mapOk {
+            Log.e("TAG23", "changes response $it")
             changesMapper.map(it)
         }
     }

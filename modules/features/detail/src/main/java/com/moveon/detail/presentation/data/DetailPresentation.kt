@@ -8,11 +8,13 @@ data class DetailPresentation(
     val title: String,
     val year: String,
     val imdbId: String,
-    val tmdbId: String,
-    val originalTitle: String,
+    val tmdbId: Int,
     val directors: List<String>?,
     val creators: List<String>?,
     val seasonsCount: Int?,
     val episodesCount: Int?,
-    val status: StatusPresentation
+    val status: StatusPresentation,
+    val seasons: List<DetailSeasonPresentation>,
+    val description: String,
+    val cast: List<String>
 )

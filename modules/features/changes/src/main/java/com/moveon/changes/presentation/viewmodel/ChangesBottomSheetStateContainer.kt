@@ -5,12 +5,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import com.moveon.changes.data.data.request.ChangesRequest
 import com.moveon.changes.presentation.data.ChangeTypePresentation
-import com.moveon.changes.presentation.data.CountryItemPresentation
-import com.moveon.changes.presentation.data.CountryServicePresentation
+import com.moveon.common.data.CountryItemPresentation
+import com.moveon.common.data.CountryServicePresentation
 import com.moveon.changes.presentation.data.TargetTypePresentation
 import com.moveon.changes.presentation.data.mapToRequest
-
-private const val DEFAULT_COUNTRY_CODE = "eu"
+import com.moveon.common.CommonConst.DEFAULT_COUNTRY_CODE
 
 class ChangesBottomSheetStateContainer(
     private val hideBottomSheet: () -> Unit,

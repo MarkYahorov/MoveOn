@@ -1,5 +1,6 @@
 package com.moveon.core.fetcher
 
+import androidx.lifecycle.viewModelScope
 import com.moveon.core.Error
 import com.moveon.core.ResponseError
 import com.moveon.core.ResponseResult

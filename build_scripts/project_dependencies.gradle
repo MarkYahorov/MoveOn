@@ -72,4 +72,12 @@ ext {
     lottieDependencies = [
             lottie: "com.airbnb.android:lottie-compose:$lottie_version",
     ]
+
+    textRecognizeDependencies = [
+            googleMl: "com.google.mlkit:text-recognition:$google_ml_version"
+    ]
+
+    accompanist = [
+            accomponist: "com.google.accompanist:accompanist-permissions:$accompanist_version"
+    ]
 }

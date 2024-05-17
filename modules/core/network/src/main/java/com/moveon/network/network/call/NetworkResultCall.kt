@@ -58,6 +58,20 @@ class NetworkResultCall<S : Any>(private val original: Call<S>) :
                                 }
                             }
                         }
+                    } else {
+                        val errorDetail = response.errorBody()?.string()?.substringAfter(":")
+                        callback.onResponse(
+                            this@NetworkResultCall,
+                            Response.success(
+                                ResponseResult.error(
+                                    NetworkError(
+                                        "oops its bad",
+                                        errorDetail,
+                                        code
+                                    )
+                                )
+                            )
+                        )
                     }
                 }
 

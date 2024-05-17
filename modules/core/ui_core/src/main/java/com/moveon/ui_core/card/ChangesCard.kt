@@ -27,6 +27,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
+import com.moveon.ui_core.BoxWithText
 import com.moveon.ui_core.ImageLoadView
 import com.moveon.ui_core.data.ChangesItemPresentation
 import com.moveon.ui_core.modifierext.bottomPadding12Dp
@@ -40,7 +41,8 @@ import com.moveon.ui_core.modifierext.verticalPadding4Dp
 fun ChangesCard(
     item: ChangesItemPresentation,
     streamingLightThemeImage: String?,
-    streamingDarkThemeImage: String?
+    streamingDarkThemeImage: String?,
+    onCardClicked: (ChangesItemPresentation) -> Unit
 ) {
     var isExpanded: Boolean by remember { mutableStateOf(false) }
     Box(
@@ -49,6 +51,7 @@ fun ChangesCard(
             .roundedShape12Dp()
             .padding(8.dp)
             .border(1.dp, Color.Black, RoundedCornerShape(12.dp))
+            .clickable { onCardClicked.invoke(item) }
     ) {
         Column(modifier = Modifier.padding(8.dp)) {
             Box(modifier = Modifier.fillMaxWidth()) {
@@ -89,21 +92,7 @@ fun ChangesCard(
             AnimatedVisibility(visible = isExpanded) {
                 Row {
                     item.show.seriesInfo.forEach {
-                        Box(
-                            modifier = Modifier
-                                .roundedShape12Dp()
-                                .background(
-                                    Color.DarkGray.copy(alpha = 0.3f),
-                                    RoundedCornerShape(12.dp)
-                                )
-                        ) {
-                            Text(
-                                text = it,
-                                modifier = Modifier
-                                    .verticalPadding4Dp()
-                                    .horizontalPadding12Dp()
-                            )
-                        }
+                        BoxWithText(it)
                         if (it != item.show.seriesInfo.last()) {
                             Spacer(modifier = Modifier.endPadding6Dp())
                         }

@@ -25,6 +25,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.moveon.changes.presentation.viewmodel.ChangesViewModel
+import com.moveon.core.navigation.BaseNavigationController
 import com.moveon.ui_core.ProgressIndicator
 import com.moveon.ui_core.R
 import com.moveon.ui_core.card.ChangesCard
@@ -33,7 +34,10 @@ import com.moveon.ui_core.modifierext.endPadding16Dp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ChangesPage(viewModel: ChangesViewModel = hiltViewModel()) {
+fun ChangesPage(
+    viewModel: ChangesViewModel = hiltViewModel(),
+    navigationController: BaseNavigationController
+) {
     if (viewModel.bottomSheetContainer.countriesList.isEmpty()) {
         viewModel.getCountries()
     }
@@ -54,7 +58,12 @@ fun ChangesPage(viewModel: ChangesViewModel = hiltViewModel()) {
                         ChangesCard(
                             item = it,
                             streamingDarkThemeImage = viewModel.bottomSheetContainer.selectedService?.images?.darkThemeImage,
-                            streamingLightThemeImage = viewModel.bottomSheetContainer.selectedService?.images?.lightThemeImage
+                            streamingLightThemeImage = viewModel.bottomSheetContainer.selectedService?.images?.lightThemeImage,
+                            onCardClicked = {
+                                with(it.show) {
+                                    navigationController.navigateToDetail(imdbId, tmdbId)
+                                }
+                            }
                         )
                     }
                 }
